@@ -20,10 +20,10 @@ string Player::to_string()
 
 int Player::stacksize()
 {
-    return this->cards;
+    return this->cards.size();
 }
 
-int Player::cardestaken()
+int Player::cardesTaken()
 {
     return this->points;
 }
