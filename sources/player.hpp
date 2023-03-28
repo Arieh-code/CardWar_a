@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <string>
 #include "card.hpp"
-
+using namespace std;
 namespace ariel
 {
     class Player
@@ -10,13 +12,13 @@ namespace ariel
 
     public:
         Player(string);
-        int cards;
         int points;
 
         int stacksize();
-        int cardestaken();
+        int cardesTaken();
         string getName();
         string to_string();
+        vector<Card> cards;
     };
 
 }
