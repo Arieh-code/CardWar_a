@@ -13,7 +13,6 @@ namespace ariel
     public:
         Player(string);
         int points;
-
         int stacksize();
         int cardesTaken();
         string getName();
