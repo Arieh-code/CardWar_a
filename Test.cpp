@@ -19,7 +19,7 @@ TEST_CASE("Basics")
     CHECK_NOTHROW(Player p1("Arieh"));
     Player temp("Ploni");
     CHECK_EQ(temp.getName(), "Ploni");
-    CHECK(temp.cards.empty());
+    CHECK_EQ(temp.getCards(), 0);
 }
 
 // testing the begining of a game
