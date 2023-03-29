@@ -9,15 +9,17 @@ namespace ariel
     class Player
     {
         string name;
+        int points;
+        vector<Card> cards;
 
     public:
         Player(string);
-        int points;
         int stacksize();
         int cardesTaken();
         string getName();
         string to_string();
-        vector<Card> cards;
+        void addPoints(int num);
+        int getCards();
     };
 
 }
