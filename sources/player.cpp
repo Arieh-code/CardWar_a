@@ -1,39 +1,49 @@
 #include <iostream>
 #include "player.hpp"
+#include <algorithm>
+#include <random>
+#include <chrono>
 using namespace ariel;
 using namespace std;
 
-Player::Player(string name)
+// initialize player with satckpile and wonpile
+Player::Player(const string &playerName) : name(playerName), playingStack_(), wonPile_()
 {
-    this->name = name;
 }
 
-string Player::getName()
+string Player::getName() const
 {
-    return this->name;
+    return name;
 }
 
-string Player::to_string()
+string Player::to_string() const
 {
-    return "" + this->name;
+    return name;
 }
 
 int Player::stacksize()
 {
-    return this->cards.size();
-}
-
-void Player::addPoints(int num)
-{
-    this->points += num;
+    return playingStack_.size();
 }
 
 int Player::cardesTaken()
 {
-    return this->points;
+    return wonPile_.size();
 }
 
-int Player::getCards()
+void Player::addCardToPlayeingStack(const Card &card)
 {
-    return this->cards.size();
+    playingStack_.push(card);
+}
+
+void Player::addCardToWonVector(const Card &card)
+{
+    wonPile_.push_back(card);
+}
+
+// shuffle function to shuffle the winning packs if there is a draw with no cards left
+void Player::shuffleWinningCards()
+{
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    shuffle(wonPile_.begin(), wonPile_.end(), default_random_engine(seed));
 }
