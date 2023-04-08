@@ -4,29 +4,28 @@
 using namespace std;
 using namespace ariel;
 
-Card::Card(string name, string type, int value)
+Card::Card(int value, char symbol)
 {
-    this->name = name;
-    this->type = type;
     this->value = value;
+    this->symbol = symbol;
 }
 
-string Card::to_string()
+string Card::to_string() const
 {
-    return "" + this->name + " of " + this->type;
+    return nameValueMap.at(value) + " of " + symbolValueMap.at(symbol);
 }
 
-int Card::getValue()
+int Card::getCardValue()
 {
     return this->value;
 }
 
-string Card::getType()
+char Card::getType()
 {
-    return this->type;
+    return this->symbol;
 }
 
-string Card::getName()
+string Card::getCardName()
 {
-    return this->name;
+    return this->nameValueMap[this->value];
 }
