@@ -15,8 +15,10 @@ namespace ariel
 
     public:
         Player(const string &playerName);
-        void addCardToPlayeingStack(const Card &card);
+        void addCardToPlayingStack(const Card &card);
         void addCardToWonVector(const Card &card);
+        Card drawCardFromPlayingStack();
+        Card drawCardFromWonPile();
         int stacksize();
         int cardesTaken();
         string getName() const;

@@ -21,6 +21,25 @@ string Player::to_string() const
     return name;
 }
 
+Card Player::drawCardFromPlayingStack()
+{
+    if (playingStack_.empty()){
+        throw runtime_error("Cannot draw card: playing stack is empty");
+    }
+    Card drawnCard = playingStack_.top();
+    playingStack_.pop();
+    return drawnCard;
+}
+
+Card Player::drawCardFromWonPile(){
+    if(wonPile_.empty()){
+        throw runtime_error("Cannot draw card: won pile is empty");
+    }
+    Card drawnCard = wonPile_.back();
+    wonPile_.pop_back();
+    return drawnCard;
+}
+
 int Player::stacksize()
 {
     return playingStack_.size();
@@ -31,7 +50,7 @@ int Player::cardesTaken()
     return wonPile_.size();
 }
 
-void Player::addCardToPlayeingStack(const Card &card)
+void Player::addCardToPlayingStack(const Card &card)
 {
     playingStack_.push(card);
 }
