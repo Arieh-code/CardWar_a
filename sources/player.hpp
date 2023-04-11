@@ -19,8 +19,8 @@ namespace ariel
         void addCardToWonVector(const Card &card);
         Card drawCardFromPlayingStack();
         Card drawCardFromWonPile();
-        int stacksize() const;
-        int cardesTaken() const;
+        int stacksize();
+        int cardesTaken();
         string getName() const;
         string to_string() const;
         // void shuffleWinningCards();

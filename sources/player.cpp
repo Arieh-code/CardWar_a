@@ -43,12 +43,12 @@ Card Player::drawCardFromWonPile()
     return drawnCard;
 }
 
-int Player::stacksize() const
+int Player::stacksize() 
 {
     return playingStack_.size();
 }
 
-int Player::cardesTaken() const
+int Player::cardesTaken() 
 {
     return wonPile_.size();
 }
