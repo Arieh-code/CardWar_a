@@ -15,6 +15,7 @@ namespace ariel
         Player player1;
         Player player2;
         vector<Card> deck;
+        vector<string> gameLog;
         int roundCounter;
         int drawCounter;
 
@@ -23,7 +24,7 @@ namespace ariel
 
     public:
         Game(Player &p1, Player &p2);
-
+        void war(stringstream &logstrea, Card card1, Card card2);
         void playTurn();
         void printLastTurn() const;
         void printLog() const;
