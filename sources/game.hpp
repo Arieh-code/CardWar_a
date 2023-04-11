@@ -29,7 +29,7 @@ namespace ariel
         void printLastTurn() const;
         void printLog() const;
         void printStats() const;
-        void printWiner() const;
+        void printWiner();
         void playAll();
     };
 }

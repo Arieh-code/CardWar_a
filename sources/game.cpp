@@ -7,8 +7,8 @@
 using namespace ariel;
 using namespace std;
 
-Game::Game(Player &p1, Player &p2)
-    : player1(p1), player2(p2), roundCounter(0), drawCounter(0),
+Game::Game(Player &p01, Player &p02)
+    : player1(p01), player2(p02), roundCounter(0), drawCounter(0),
       deck({}), gameLog({})
 {
     // initialize deck
@@ -41,12 +41,16 @@ void Game::dealCards()
     }
     for (int i = 0; i < 26; i++)
     {
-        player1.addCardToPlayingStack(deck.back());
+        this->player1.addCardToPlayingStack(deck.back());
         deck.pop_back();
 
-        player2.addCardToPlayingStack(deck.back());
+        this->player2.addCardToPlayingStack(deck.back());
         deck.pop_back();
     }
+
+    cout << "finished handing out cards" << endl;
+    cout << "Player 1 amount of cards: " << player1.stacksize() << endl;
+    cout << "Player 2 amount of cards: " << player2.stacksize() << endl;
 }
 
 void Game::playTurn()
@@ -247,7 +251,7 @@ void Game::printStats() const
     cout << "testing" << endl;
 };
 
-void Game::printWiner() const
+void Game::printWiner()
 {
     if (player1.stacksize() > 0 || player2.stacksize() > 0)
     {
