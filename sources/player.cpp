@@ -23,7 +23,8 @@ string Player::to_string() const
 
 Card Player::drawCardFromPlayingStack()
 {
-    if (playingStack_.empty()){
+    if (playingStack_.empty())
+    {
         throw runtime_error("Cannot draw card: playing stack is empty");
     }
     Card drawnCard = playingStack_.top();
@@ -31,8 +32,10 @@ Card Player::drawCardFromPlayingStack()
     return drawnCard;
 }
 
-Card Player::drawCardFromWonPile(){
-    if(wonPile_.empty()){
+Card Player::drawCardFromWonPile()
+{
+    if (wonPile_.empty())
+    {
         throw runtime_error("Cannot draw card: won pile is empty");
     }
     Card drawnCard = wonPile_.back();
@@ -40,12 +43,12 @@ Card Player::drawCardFromWonPile(){
     return drawnCard;
 }
 
-int Player::stacksize()
+int Player::stacksize() const
 {
     return playingStack_.size();
 }
 
-int Player::cardesTaken()
+int Player::cardesTaken() const
 {
     return wonPile_.size();
 }
@@ -61,8 +64,8 @@ void Player::addCardToWonVector(const Card &card)
 }
 
 // shuffle function to shuffle the winning packs if there is a draw with no cards left
-void Player::shuffleWinningCards()
-{
-    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-    shuffle(wonPile_.begin(), wonPile_.end(), default_random_engine(seed));
-}
+// void Player::shuffleWinningCards()
+// {
+//     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+//     shuffle(wonPile_.begin(), wonPile_.end(), default_random_engine(seed));
+// }
