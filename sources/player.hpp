@@ -24,6 +24,9 @@ namespace ariel
         int cardesTaken();
         string getName() const;
         string to_string() const;
+        int getRoundsWon();
+        void increaseRoundsWon();
+        void setRoundsWon(int num);
         // void shuffleWinningCards();
     };
 

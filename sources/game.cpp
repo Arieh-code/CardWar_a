@@ -23,8 +23,8 @@ Game::Game(Player &p01, Player &p02)
 
     this->roundCounter = 0;
     this->drawCounter = 0;
-    player1.roundsWon = 0;
-    player2.roundsWon = 0; 
+    player1.setRoundsWon(0);
+    player2.setRoundsWon(0);
     shuffleDeck();
     dealCards();
 }
@@ -87,7 +87,7 @@ void Game::playTurn()
         this->gameLog.push_back(logstream.str());
         logstream.str("");
         logstream.clear();
-        player1.roundsWon++;
+        player1.increaseRoundsWon();
     }
 
     else if (card2.getCardValue() > card1.getCardValue() || (card2.getCardValue() == 1 && card1.getCardValue() != 2))
@@ -100,8 +100,8 @@ void Game::playTurn()
         this->gameLog.push_back(logstream.str());
         logstream.str("");
         logstream.clear();
-        player2.roundsWon++
-            }
+        player2.increaseRoundsWon();
+    }
 
     else
     {
@@ -161,7 +161,7 @@ void Game::war(stringstream &logstream, Card card1, Card card2)
                 this->gameLog.push_back(logstream.str());
                 logstream.str("");
                 logstream.clear();
-                player1.roundsWon++;
+                player1.increaseRoundsWon();
                 warEnded = true;
             }
 
@@ -181,7 +181,7 @@ void Game::war(stringstream &logstream, Card card1, Card card2)
                 this->gameLog.push_back(logstream.str());
                 logstream.str("");
                 logstream.clear();
-                player2.roundsWon++;
+                player2.increaseRoundsWon();
                 warEnded = true;
             }
 
@@ -258,9 +258,9 @@ void Game::printLog() const
 void Game::printStats() const
 {
     // printing stats for each player
-    cout << player1.getName() << " won " << player1.roundsWon << " out of "
+    cout << player1.getName() << " won " << player1.getRoundsWon() << " out of "
          << this->roundCounter << " rounds" << endl;
-    cout << player2.getName() << " won " << player2.roundsWon << " out of "
+    cout << player2.getName() << " won " << player2.getRoundsWon() << " out of "
          << this->roundCounter << " rounds" << endl;
     cout << "This game has had: " << this->drawCounter << " amount of draws, which is: "
          << this->drawCounter << " rounds out of " << this->roundCounter << endl;

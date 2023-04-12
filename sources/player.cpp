@@ -63,6 +63,20 @@ void Player::addCardToWonVector(const Card &card)
     wonPile_.push_back(card);
 }
 
+int Player::getRoundsWon()
+{
+    return this->roundsWon;
+}
+
+void Player::increaseRoundsWon()
+{
+    this->roundsWon++;
+}
+
+void Player::setRoundsWon(int num)
+{
+    this->roundsWon = num;
+}
 // shuffle function to shuffle the winning packs if there is a draw with no cards left
 // void Player::shuffleWinningCards()
 // {
