@@ -11,6 +11,7 @@ Game::Game(Player &p01, Player &p02)
     : player1(p01), player2(p02), roundCounter(0), drawCounter(0),
       deck({}), gameLog({})
 {
+
     // initialize deck
     for (int i = 1; i <= 13; i++)
     {
@@ -20,10 +21,10 @@ Game::Game(Player &p01, Player &p02)
         deck.push_back(Card(i, 'C'));
     }
 
+    this->roundCounter = 0;
+    this->drawCounter = 0;
     shuffleDeck();
     dealCards();
-    cout << "Player 1 amount of cards: " << player1.stacksize() << endl;
-    cout << "Player 2 amount of cards: " << player2.stacksize() << endl;
 }
 
 void Game::shuffleDeck()
@@ -47,10 +48,6 @@ void Game::dealCards()
         this->player2.addCardToPlayingStack(deck.back());
         deck.pop_back();
     }
-
-    cout << "finished handing out cards" << endl;
-    cout << "Player 1 amount of cards: " << player1.stacksize() << endl;
-    cout << "Player 2 amount of cards: " << player2.stacksize() << endl;
 }
 
 void Game::playTurn()
@@ -66,6 +63,9 @@ void Game::playTurn()
     {
         throw runtime_error("Cannot play turn: no cards in playing stack");
     }
+
+    // add a to round counter
+    this->roundCounter++;
 
     // get top card of each player stack
 
@@ -101,6 +101,8 @@ void Game::playTurn()
 
     else
     {
+        // add to draw counter
+        this->drawCounter++;
         // its a tie, time for war!!!!
         logstream << " draw.";
         war(logstream, card1, card2);
@@ -179,6 +181,8 @@ void Game::war(stringstream &logstream, Card card1, Card card2)
 
             else
             {
+                // add to draw counter
+                this->drawCounter++;
                 logstream << " draw.";
             }
         }
@@ -247,29 +251,28 @@ void Game::printLog() const
 };
 void Game::printStats() const
 {
-    // chcek in group what to do.
-    cout << "testing" << endl;
-};
+    // printing stats for each player
+    cout << player1.getName() << " won " << player1.cardesTaken() << " out of "
+         << this->roundCounter << " rounds" << endl;
+    cout << player2.getName() << " won " << player2.cardesTaken() << " out of "
+         << this->roundCounter << " rounds" << endl;
+    cout << "This game has had: " << this->drawCounter << " amount of draws, which is: "
+         << this->drawCounter << " rounds out of " << this->roundCounter << endl;
+}
 
 void Game::printWiner()
 {
-    if (player1.stacksize() > 0 || player2.stacksize() > 0)
+
+    if (player1.cardesTaken() > player2.cardesTaken())
     {
-        throw runtime_error("Cannot print winner: game hasn't ended");
+        cout << player1.getName() << ": is the winner!" << endl;
+    }
+    else if (player2.cardesTaken() > player1.cardesTaken())
+    {
+        cout << player2.getName() << ": is the winner!" << endl;
     }
     else
     {
-        if (player1.cardesTaken() > player2.cardesTaken())
-        {
-            cout << player1.getName() << ": is the winner!" << endl;
-        }
-        else if (player2.cardesTaken() > player1.cardesTaken())
-        {
-            cout << player2.getName() << ": is the winner!" << endl;
-        }
-        else
-        {
-            cout << "The game ended in a draw" << endl;
-        }
+        cout << "The game ended in a draw" << endl;
     }
 };

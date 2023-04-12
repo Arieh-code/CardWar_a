@@ -12,8 +12,8 @@ namespace ariel
     class Game
     {
     private:
-        Player player1;
-        Player player2;
+        Player& player1;
+        Player& player2;
         vector<Card> deck;
         vector<string> gameLog;
         int roundCounter;
@@ -23,7 +23,7 @@ namespace ariel
         void dealCards();
 
     public:
-        Game(Player &p1, Player &p2);
+        Game(Player &p01, Player &p02);
         void war(stringstream &logstrea, Card card1, Card card2);
         void playTurn();
         void printLastTurn() const;
