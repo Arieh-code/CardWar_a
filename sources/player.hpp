@@ -12,6 +12,7 @@ namespace ariel
         string name;
         stack<Card> playingStack_;
         vector<Card> wonPile_;
+        int roundsWon;
 
     public:
         Player(const string &playerName);
