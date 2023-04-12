@@ -30,12 +30,10 @@ This game was developed using C++ and does not require any external libraries or
 
 ## Acknowledgements
 
-This game was created by [Your Name] as a personal project. Feel free to use, modify, or distribute the game according to the terms of the [license](LICENSE) provided.
+This game was created by Arieh Norton as a personal project. Feel free to use, modify, or distribute the game.
 
 ## Contributing
 
 If you would like to contribute to the game, please submit a pull request with your proposed changes. All contributions are welcome!
 
-## Contact
 
-If you have any questions, comments, or suggestions regarding the game, please feel free to contact [Your Email Address].
