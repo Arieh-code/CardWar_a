@@ -77,9 +77,3 @@ void Player::setRoundsWon(int num)
 {
     this->roundsWon = num;
 }
-// shuffle function to shuffle the winning packs if there is a draw with no cards left
-// void Player::shuffleWinningCards()
-// {
-//     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-//     shuffle(wonPile_.begin(), wonPile_.end(), default_random_engine(seed));
-// }

@@ -27,7 +27,6 @@ namespace ariel
         int getRoundsWon();
         void increaseRoundsWon();
         void setRoundsWon(int num);
-        // void shuffleWinningCards();
     };
 
 }
