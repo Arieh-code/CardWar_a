@@ -262,7 +262,7 @@ void Game::printStats() const
          << this->roundCounter << " rounds" << endl;
     cout << player2.getName() << " won " << player2.getRoundsWon() << " out of "
          << this->roundCounter << " rounds" << endl;
-    cout << "This game has had: " << this->drawCounter << " amount of draws, which is: "
+    cout << "This game has had: " << this->drawCounter << " draws, which is: "
          << this->drawCounter << " rounds out of " << this->roundCounter << endl;
 }
 
